@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-
+app.set('view engine', 'ejs')
 const port =  8000;
 
 app.use((req,res, next) => {
@@ -11,23 +11,24 @@ app.use((req,res, next) => {
     next();
 })
 app.get('/', (req, res) => {
-    res.sendFile('./views/index.html', { root: __dirname})
+    res.render('index', {heading: "ex battalion music"})
+    //res.sendFile('./views/index', { root: __dirname})
 });
 
 app.get('/about', (req, res) => {
-    res.sendFile('./views/about.html', { root: __dirname})
+    //res.sendFile('./views/about', { root: __dirname})
 });
 
 app.get('/home',  (req, res) =>{
-    res.redirect('/')
+    //res.redirect('/')
 })
 
 app.get('/aboutus',  (req, res) =>{
-    res.redirect('/about')
+    //res.redirect('/about')
 })
 
 app.use((req, res) =>{
-    res.status(404).sendFile('./views/error.html', { root: __dirname })
+    //res.status(404).sendFile('./views/error', { root: __dirname })
 })
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
