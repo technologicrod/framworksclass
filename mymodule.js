@@ -9,7 +9,7 @@ const students = [
 ]
 
 const hello = function(name = "Cardo") {
-    console.log(`Hello ${name}`)
+    return (`Hello ${name}`)
 }
 //module.exports = {fullnames}
 //module.exports = {fullnames, students}

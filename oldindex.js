@@ -1,8 +1,10 @@
 const express = require('express')
 const app = express()
+const { students, hello } = require('./mymodule')
 app.set('view engine', 'ejs')
 const port =  8000;
 
+//console.log(students);
 app.use((req,res, next) => {
     console.log("Request made")
     console.log(`Host: ${req.hostname}`)
@@ -16,6 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/about', (req, res) => {
+    res.render('about',{studentData: students, hellofunc: hello})
     //res.sendFile('./views/about', { root: __dirname})
 });
 
