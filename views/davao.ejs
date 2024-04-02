@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+    <style>
+      .latlong {
+        font-size: 20px;
+        color: black;
+      }
+      .flag {
+        margin-bottom: 10px;
+        border: 3px solid grey;
+        border-radius: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header></header>
+    <main class="container">
+      <center>
+        <div>
+          <img
+            class="flag"
+            src="https://cdn-icons-png.flaticon.com/512/197/197561.png"
+            width="50"
+            height="'50"
+          />
+          <h4><%= weatherdavao[0].location.name %></h4>
+          <p class="latlong">
+            <%= weatherdavao[0].location.lat %> lat, <%=
+            weatherdavao[0].location.long %> long
+          </p>
+        </div>
+      </center>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Day</th>
+            <th scope="col">Date</th>
+            <th scope="col">Weather</th>
+            <th scope="col">
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-active">
+            <th scope="row">Today</th>
+            <td><b><%= weatherdavao[1].current.date %></b></td>
+            <td><%= weatherdavao[1].current.skytext %></td>
+            <td>
+              <% if (weatherdavao[1].current.skytext == 'Mostly Cloudy' || weatherdavao[1].current.skytext == 'Cloudy' || weatherdavao[1].current.skytext == 'Partly Cloudy') { %>
+                <img src="https://cdn-icons-png.flaticon.com/512/2932/2932445.png" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].current.skytext == 'Sunny' || weatherdavao[1].current.skytext == 'Partly Sunny' || weatherdavao[1].current.skytext == 'Mostly Sunny') {%>
+                <img src="https://cdn-icons-png.flaticon.com/512/3313/3313896.png" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].current.skytext == 'Rain' || weatherdavao[1].current.skytext == 'Partly Rainy' || weatherdavao[1].current.skytext == 'Mostly Rainy') {%>
+                <img src="https://cdn-icons-png.flaticon.com/512/106/106059.png" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].current.skytext == 'Clear' || weatherdavao[1].current.skytext == 'Mostly Clear') {%>
+                <img src="https://cdn-icons.flaticon.com/png/512/3222/premium/3222794.png?token=exp=1645541396~hmac=46736360bb7d272e584195643c92f465" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].current.skytext == 'Thunderstorm') {%>
+                <img src="https://cdn-icons.flaticon.com/png/512/3238/premium/3238823.png?token=exp=1645541718~hmac=b222cb9b6be70958d1c3a1f872da6a2d" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].current.skytext == 'Windy') {%>
+                <img src="https://cdn-icons-png.flaticon.com/512/4150/4150819.png" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].current.skytext == 'Snowy') {%>
+                <img src="https://cdn-icons-png.flaticon.com/512/1779/1779743.png" alt="" width ="30" height="30">
+              <% } %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><%= weatherdavao[1].forecast[0].day %></th>
+            <td><%= weatherdavao[1].forecast[0].date %></td>
+            <td><%= weatherdavao[1].forecast[0].skytextday %></td>
+            <td>
+              <% if (weatherdavao[1].forecast[0].skytextday == 'Mostly Cloudy' || weatherdavao[1].forecast[0].skytextday == 'Cloudy' || weatherdavao[1].forecast[0].skytextday == 'Partly Cloudy') { %>
+                <img src="https://cdn-icons-png.flaticon.com/512/2932/2932445.png" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[0].skytextday == 'Sunny' || weatherdavao[1].forecast[0].skytextday == 'Partly Sunny' || weatherdavao[1].forecast[0].skytextday == 'Mostly Sunny') {%>
+                <img src="https://cdn-icons-png.flaticon.com/512/3313/3313896.png" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[0].skytextday == 'Rain' || weatherdavao[1].forecast[0].skytextday == 'Partly Rainy' || weatherdavao[1].forecast[0].skytextday == 'Mostly Rainy') {%>
+                <img src="https://cdn-icons-png.flaticon.com/512/106/106059.png" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[0].skytextday == 'Clear' || weatherdavao[1].forecast[0].skytextday == 'Mostly Clear') {%>
+                <img src="https://cdn-icons.flaticon.com/png/512/3222/premium/3222794.png?token=exp=1645541396~hmac=46736360bb7d272e584195643c92f465" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[0].skytextday == 'Thunderstorm') {%>
+                <img src="https://cdn-icons.flaticon.com/png/512/3238/premium/3238823.png?token=exp=1645541718~hmac=b222cb9b6be70958d1c3a1f872da6a2d" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[0].skytextday == 'Windy') {%>
+                <img src="https://cdn-icons-png.flaticon.com/512/4150/4150819.png" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[0].skytextday == 'Snowy') {%>
+                <img src="https://cdn-icons-png.flaticon.com/512/1779/1779743.png" alt="" width ="30" height="30">
+              <% } %>
+            </td>
+          </tr>
+          <tr class="table-active">
+            <th scope="row"><%= weatherdavao[1].forecast[1].day %></th>
+            <td><%= weatherdavao[1].forecast[1].date %></td>
+            <td><%= weatherdavao[1].forecast[1].skytextday %></td>
+            <td>
+              <% if (weatherdavao[1].forecast[1].skytextday == 'Mostly Cloudy' || weatherdavao[1].forecast[1].skytextday == 'Cloudy' || weatherdavao[1].forecast[1].skytextday == 'Partly Cloudy') { %>
+                <img src="https://cdn-icons-png.flaticon.com/512/2932/2932445.png" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[1].skytextday == 'Sunny' || weatherdavao[1].forecast[1].skytextday == 'Partly Sunny' || weatherdavao[1].forecast[1].skytextday == 'Mostly Sunny') {%>
+                <img src="https://cdn-icons-png.flaticon.com/512/3313/3313896.png" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[1].skytextday == 'Rain' || weatherdavao[1].forecast[1].skytextday == 'Partly Rainy' || weatherdavao[1].forecast[1].skytextday == 'Mostly Rainy') {%>
+                <img src="https://cdn-icons-png.flaticon.com/512/106/106059.png" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[1].skytextday == 'Clear' || weatherdavao[1].forecast[1].skytextday == 'Mostly Clear') {%>
+                <img src="https://cdn-icons.flaticon.com/png/512/3222/premium/3222794.png?token=exp=1645541396~hmac=46736360bb7d272e584195643c92f465" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[1].skytextday == 'Thunderstorm') {%>
+                <img src="https://cdn-icons.flaticon.com/png/512/3238/premium/3238823.png?token=exp=1645541718~hmac=b222cb9b6be70958d1c3a1f872da6a2d" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[1].skytextday == 'Windy') {%>
+                <img src="https://cdn-icons-png.flaticon.com/512/4150/4150819.png" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[1].skytextday == 'Snowy') {%>
+                <img src="https://cdn-icons-png.flaticon.com/512/1779/1779743.png" alt="" width ="30" height="30">
+              <% } %>
+            </td>
+          </tr>
+          <tr">
+          <th scope="row"><%= weatherdavao[1].forecast[2].day %></th>
+          <td><%= weatherdavao[1].forecast[2].date %></td>
+          <td><%= weatherdavao[1].forecast[2].skytextday %></td>
+          <td>
+            <% if (weatherdavao[1].forecast[2].skytextday == 'Mostly Cloudy' || weatherdavao[1].forecast[2].skytextday == 'Cloudy' || weatherdavao[1].forecast[2].skytextday == 'Partly Cloudy') { %>
+              <img src="https://cdn-icons-png.flaticon.com/512/2932/2932445.png" alt="" width ="30" height="30">
+            <% } else if (weatherdavao[1].forecast[2].skytextday == 'Sunny' || weatherdavao[1].forecast[2].skytextday == 'Partly Sunny' || weatherdavao[1].forecast[2].skytextday == 'Mostly Sunny') {%>
+              <img src="https://cdn-icons-png.flaticon.com/512/3313/3313896.png" alt="" width ="30" height="30">
+            <% } else if (weatherdavao[1].forecast[2].skytextday == 'Rain' || weatherdavao[1].forecast[2].skytextday == 'Partly Rainy' || weatherdavao[1].forecast[2].skytextday == 'Mostly Rainy') {%>
+              <img src="https://cdn-icons-png.flaticon.com/512/106/106059.png" alt="" width ="30" height="30">
+            <% } else if (weatherdavao[1].forecast[2].skytextday == 'Clear' || weatherdavao[1].forecast[2].skytextday == 'Mostly Clear') {%>
+              <img src="https://cdn-icons.flaticon.com/png/512/3222/premium/3222794.png?token=exp=1645541396~hmac=46736360bb7d272e584195643c92f465" alt="" width ="30" height="30">
+            <% } else if (weatherdavao[1].forecast[2].skytextday == 'Thunderstorm') {%>
+              <img src="https://cdn-icons.flaticon.com/png/512/3238/premium/3238823.png?token=exp=1645541718~hmac=b222cb9b6be70958d1c3a1f872da6a2d" alt="" width ="30" height="30">
+            <% } else if (weatherdavao[1].forecast[2].skytextday == 'Windy') {%>
+              <img src="https://cdn-icons-png.flaticon.com/512/4150/4150819.png" alt="" width ="30" height="30">
+            <% } else if (weatherdavao[1].forecast[2].skytextday == 'Snowy') {%>
+              <img src="https://cdn-icons-png.flaticon.com/512/1779/1779743.png" alt="" width ="30" height="30">
+            <% } %>
+          </td>
+          </tr>
+          <tr class="table-active">
+            <th scope="row"><%= weatherdavao[1].forecast[3].day %></th>
+            <td><%= weatherdavao[1].forecast[3].date %></td>
+            <td><%= weatherdavao[1].forecast[3].skytextday %></td>
+            <td>
+              <% if (weatherdavao[1].forecast[3].skytextday == 'Mostly Cloudy' || weatherdavao[1].forecast[3].skytextday == 'Cloudy' || weatherdavao[1].forecast[3].skytextday == 'Partly Cloudy') { %>
+                <img src="https://cdn-icons-png.flaticon.com/512/2932/2932445.png" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[3].skytextday == 'Sunny' || weatherdavao[1].forecast[3].skytextday == 'Partly Sunny' || weatherdavao[1].forecast[3].skytextday == 'Mostly Sunny') {%>
+                <img src="https://cdn-icons-png.flaticon.com/512/3313/3313896.png" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[3].skytextday == 'Rain' || weatherdavao[1].forecast[3].skytextday == 'Partly Rainy' || weatherdavao[1].forecast[3].skytextday == 'Mostly Rainy') {%>
+                <img src="https://cdn-icons-png.flaticon.com/512/106/106059.png" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[3].skytextday == 'Clear' || weatherdavao[1].forecast[3].skytextday == 'Mostly Clear') {%>
+                <img src="https://cdn-icons.flaticon.com/png/512/3222/premium/3222794.png?token=exp=1645541396~hmac=46736360bb7d272e584195643c92f465" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[3].skytextday == 'Thunderstorm') {%>
+                <img src="https://cdn-icons.flaticon.com/png/512/3238/premium/3238823.png?token=exp=1645541718~hmac=b222cb9b6be70958d1c3a1f872da6a2d" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[3].skytextday == 'Windy') {%>
+                <img src="https://cdn-icons-png.flaticon.com/512/4150/4150819.png" alt="" width ="30" height="30">
+              <% } else if (weatherdavao[1].forecast[3].skytextday == 'Snowy') {%>
+                <img src="https://cdn-icons-png.flaticon.com/512/1779/1779743.png" alt="" width ="30" height="30">
+              <% } %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>
